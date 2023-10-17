@@ -29,6 +29,5 @@ class Test_Base_model(unittest.TestCase):
         
     def test_str__(self):
         model = BaseModel()
-        compare_str = f"[{model.__class__.__name__}] ({model.id}) {model.__dict__}"
         output_str = model.__str__()
-        self.assertTrue(output_str != None)
+        self.assertIsNotNone(output_str)
