@@ -6,7 +6,7 @@ from models.base_model import BaseModel
 import unittest
 
 
-class TestBase_model(unittest.TestCase):
+class Test_Base_model(unittest.TestCase):
     def test_new(self):
         """assert new item created with set values"""
         my_model = BaseModel()
@@ -25,4 +25,4 @@ class TestBase_model(unittest.TestCase):
     def test_to_dict(self):
         model = BaseModel()
         model_dict = model.to_dict()
-        self.assertTrue(model_dict != None)
+        self.assertTrue(isinstance(model_dict, dict))
