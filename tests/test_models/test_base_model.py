@@ -24,4 +24,5 @@ class TestBase_model(unittest.TestCase):
         
     def test_to_dict(self):
         model = BaseModel()
-        self.assertTrue(model.to_dict() != None)
+        model_dict = model.to_dict()
+        self.assertTrue(model_dict != None)
