@@ -21,3 +21,7 @@ class TestBase_model(unittest.TestCase):
         model.save()
         time_after_save = model.updated_at
         self.assertTrue(time_before_save != time_after_save)
+        
+    def test_to_dict(self):
+        model = BaseModel()
+        self.assertTrue(model.to_dict() != None)
