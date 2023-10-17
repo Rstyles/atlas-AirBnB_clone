@@ -10,8 +10,8 @@ import uuid
 class BaseModel:
     """Defines the BaseModel"""
 
-    def __init__(self) -> None:
-        """initialized the BaseModel and sets the id, created_at, and updated_at properties"""
+    def __init__(self):
+        """initializes the BaseModel and sets the id, created_at, and updated_at properties"""
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
@@ -20,8 +20,8 @@ class BaseModel:
         """returns the string format "[<class name>] (<self.id>) <self.__dict__>" """
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__})"
 
-    def save(self) -> None:
-        """updates the public instance attribute updated_at with the current datetime"""
+    def save(self):
+        """updates the public instance attribute updated_at with the current data"""
         self.updated_at = datetime.now()
 
     def to_dict(self) -> dict:
