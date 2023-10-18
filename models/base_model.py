@@ -10,14 +10,16 @@ import uuid
 class BaseModel:
     """Defines the BaseModel"""
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs) -> None:
         """initializes the BaseModel and sets the id, created_at, and updated_at properties"""
+        time_format = "%Y-%m-%dT%H:%M:%S.%f"
         if kwargs:
-            for key, value in kwargs:
+            for key in kwargs:
                 if key == "updated_at" or key == "created_at":
-                    value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
-                if key != "__class__":
-                    self.__dict__[key] = value
+                    kwargs[key] = datetime.strptime(kwargs[key], time_format)
+                if key == "__class__":
+                    del kwargs["__class__"]
+            self.__dict__.update(kwargs)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
@@ -25,7 +27,7 @@ class BaseModel:
 
     def __str__(self) -> str:
         """returns the string format "[<class name>] (<self.id>) <self.__dict__>" """
-        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__})"
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
         """updates the public instance attribute updated_at with the current data"""
