@@ -12,7 +12,7 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """initializes the BaseModel and sets the id, created_at, and updated_at properties"""
-        if kwargs is not None:
+        if kwargs:
             for key, value in kwargs:
                 if key == "updated_at" or key == "created_at":
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
