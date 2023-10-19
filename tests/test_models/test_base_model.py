@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Unit Tests for models/base_model.py"""
+import os
 import unittest
 import uuid
 from datetime import datetime
@@ -21,7 +22,7 @@ class TestBaseModel(unittest.TestCase):
             "id": "test_id",
             "created_at": "2023-10-18T12:00:00.000000",
             "updated_at": "2023-10-18T12:01:00.000000",
-            "custom_field": "test_value"
+            "custom_field": "test_value",
         }
         obj = BaseModel(**data)
         self.assertEqual(obj.id, data["id"])

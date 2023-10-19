@@ -40,7 +40,7 @@ class TestFileStorage(unittest.TestCase):
         sample_obj = BaseModel()
         sample_obj.id = "sample_id"
         storage.new(sample_obj)
-        self.assertTrue(os.path.exists(self.__file_path))
+        self.assertTrue(os.path.exists(storage.__file_path))
 
 
 if __name__ == "__main__":
