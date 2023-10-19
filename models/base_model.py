@@ -17,9 +17,8 @@ class BaseModel:
             for key in kwargs:
                 if key == "updated_at" or key == "created_at":
                     kwargs[key] = datetime.strptime(kwargs[key], time_format)
-                if key == "__class__":
-                    del kwargs["__class__"]
-            self.__dict__.update(kwargs)
+                if key != "__class__":
+                    self.__dict__[key] = kwargs[key]
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
