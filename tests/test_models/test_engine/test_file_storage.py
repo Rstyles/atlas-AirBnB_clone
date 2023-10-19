@@ -7,16 +7,6 @@ from models.engine.file_storage import FileStorage
 
 
 class TestFileStorage(unittest.TestCase):
-    def setUp(self):
-        # Create a temporary JSON file for testing
-        self.temp_file = tempfile.NamedTemporaryFile(delete=False)
-        self.temp_file.close()
-        self.temp_file_path = self.temp_file.name
-
-    def tearDown(self):
-        # Remove the temporary JSON file after testing
-        os.remove(self.temp_file_path)
-
     def test_new_and_all(self):
         storage = FileStorage()
         # Create a sample object
@@ -43,6 +33,14 @@ class TestFileStorage(unittest.TestCase):
 
         # Check if the reloaded object matches the original object
         self.assertEqual(new_storage.all(), {"SampleObject.sample_id": sample_obj})
+
+    def test_save(self):
+        storage = FileStorage()
+        # Create a sample object
+        sample_obj = BaseModel()
+        sample_obj.id = "sample_id"
+        storage.new(sample_obj)
+        self.assertTrue(os.path.exists(self.__file_path))
 
 
 if __name__ == "__main__":
