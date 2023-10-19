@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """This module rovides a simple way to serialize and deserialize Python objects to and from a JSON file.
 """
+from models.base_model import BaseModel
 import json
 import os
 
@@ -41,10 +42,10 @@ class FileStorage:
         Returns:
             None
         """
-        obj: dict =  {}
+        obj: dict = {}
         for key, value in self.__objects.items():
             obj[key] = value.to_dict()
-        
+
         with open(self.__file_path, "w") as json_file:
             json.dump(obj, json_file)
 
