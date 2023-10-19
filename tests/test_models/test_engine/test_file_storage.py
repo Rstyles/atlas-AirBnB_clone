@@ -40,6 +40,10 @@ class TestFileStorage(unittest.TestCase):
         sample_obj = BaseModel()
         sample_obj.id = "sample_id"
         storage.new(sample_obj)
+
+        # Save the objects to the temporary file
+        storage.save()
+
         self.assertTrue(os.path.exists(storage.__file_path))
 
 
