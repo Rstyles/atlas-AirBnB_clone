@@ -125,6 +125,7 @@ class HBNBCommand(cmd.Cmd):
         for key in all_objs:
             if (
                 all_objs[key].id == args[1]
+                and len(args) == 4
                 and args[1] != "created_at"
                 and args != "updated_at"
             ):
@@ -136,5 +137,3 @@ class HBNBCommand(cmd.Cmd):
         print("** no instance found **")
 
 
-if __name__ == "__main__":
-    HBNBCommand().cmdloop()
