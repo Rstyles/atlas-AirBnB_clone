@@ -126,6 +126,7 @@ class HBNBCommand(cmd.Cmd):
             return
         elif len(args) < 4:
             print("** value missing **")
+            return
         all_objs = storage.all()
         for key in all_objs:
             if (
