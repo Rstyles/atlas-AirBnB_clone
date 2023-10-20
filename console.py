@@ -59,7 +59,7 @@ class HBNBCommand(cmd.Cmd):
             if all_objs[key].id == args[1]:
                 print(str(all_objs[key]))
                 return
-        print("** instance id missing **")
+        print("** no instance found **")
 
     def do_destroy(self, arg):
         """Deletes an instance of an object
@@ -121,9 +121,11 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) < 2:
             print("** instance id missing **")
             return
-        elif len(args) < 4:
+        elif len(args) < 3:
             print("** attribute name missing **")
             return
+        elif len(args) < 4:
+            print("** value missing **")
         all_objs = storage.all()
         for key in all_objs:
             if (
