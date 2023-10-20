@@ -121,11 +121,13 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) < 2:
             print("** instance id missing **")
             return
+        elif len(args) < 4:
+            print("** attribute name missing **")
+            return
         all_objs = storage.all()
         for key in all_objs:
             if (
                 all_objs[key].id == args[1]
-                and len(args) == 4
                 and args[1] != "created_at"
                 and args != "updated_at"
             ):
