@@ -71,7 +71,7 @@ class HBNBCommand(cmd.Cmd):
 
         all_objs = storage.all()
         for key in all_objs:
-            if all_objs[key].__class__ == args[0] and all_objs[key].id == args[1]:
+            if key.split(".")[0] == args[0] and all_objs[key].id == args[1]:
                 print(str(all_objs[key]))
                 return
         print("** no instance found **")
@@ -94,7 +94,8 @@ class HBNBCommand(cmd.Cmd):
 
         all_objs = storage.all()
         for key in all_objs:
-            if all_objs[key].__class__ == args[0] and all_objs[key].id == args[1]:
+            class_name = all_objs[key].__class__
+            if key.split(".")[0] == args[0] and all_objs[key].id == args[1]:
                 del all_objs[key]
                 storage.save()
                 return
@@ -145,7 +146,7 @@ class HBNBCommand(cmd.Cmd):
         all_objs = storage.all()
         for key in all_objs:
             if (
-                all_objs[key].__class__ == args[0]
+                key.split(".")[0] == args[0]
                 and all_objs[key].id == args[1]
                 and args[1] != "created_at"
                 and args != "updated_at"
