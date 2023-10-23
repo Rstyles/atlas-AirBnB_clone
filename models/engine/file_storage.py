@@ -2,6 +2,7 @@
 """This module rovides a simple way to serialize and deserialize Python objects to and from a JSON file.
 """
 from models.base_model import BaseModel
+from models.user import User
 import json
 import os
 
