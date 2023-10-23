@@ -10,7 +10,15 @@ from models import storage
 
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
-    available_classes = ["BaseModel", "User"]
+    available_classes = [
+        "BaseModel",
+        "User",
+        "Place",
+        "State",
+        "City",
+        "Amenity",
+        "Review",
+    ]
 
     def do_quit(self, arg):
         """Exit the console"""
