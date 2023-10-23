@@ -4,12 +4,13 @@
 import cmd
 
 from models.base_model import BaseModel
+from models.user import User
 from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
-    available_classes = ["BaseModel"]
+    available_classes = ["BaseModel", "User"]
 
     def do_quit(self, arg):
         """Exit the console"""
@@ -140,5 +141,3 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
                 return
         print("** no instance found **")
-
-
