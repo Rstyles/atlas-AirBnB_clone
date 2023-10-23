@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" User model
+""" Review model
 """
 from models.base_model import BaseModel
 
